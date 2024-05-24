@@ -1,0 +1,114 @@
+
+
+
+        # 电影详情布局开始
+        # 容器控件
+        labelframe_movie_detail = LabelFrame(root, text="影片详情")
+        labelframe_movie_detail.place(x=670, y=5)
+        self.labelframe_movie_detail = labelframe_movie_detail
+
+
+        # 框架布局，承载多个控件
+        frame_left_movie_detail = Frame(labelframe_movie_detail, width=160,height=280)
+        frame_left_movie_detail.grid(row=0, column=0)
+        self.frame_left_movie_detail = frame_left_movie_detail
+
+
+        frame_right_movie_detail = Frame(labelframe_movie_detail, width=160,height=280)
+        frame_right_movie_detail.grid(row=0, column=1)
+        self.frame_right_movie_detail = frame_right_movie_detail
+
+
+        #影片图片
+        label_img = Label(frame_left_movie_detail, text="", anchor=N)
+        label_img.place(x=0,y=0) #布局
+        self.label_img = label_img
+
+        # IMDB评分
+        ft_rating_imdb = font.Font(weight=font.BOLD)
+        label_movie_rating_imdb = Label(frame_left_movie_detail, text="IMDB评分", fg='#7F00FF', font=ft_rating_imdb, anchor=NW)
+        label_movie_rating_imdb.place(x=0, y=250)
+        self.label_movie_rating_imdb = label_movie_rating_imdb
+
+        # 查询按钮
+        B_0_imdb = Button(frame_left_movie_detail, text="初始化")
+        B_0_imdb.place(x=115, y=250)
+        self.B_0_imdb = B_0_imdb
+
+
+        #影片名字
+        ft = font.Font(size=15, weight=font.BOLD)
+        label_movie_name = Label(frame_right_movie_detail, text="影片名字", fg='#FF0000', font=ft,anchor=NW)
+        label_movie_name.place(x=0, y=0)
+        self.label_movie_name = label_movie_name
+
+        #影片评分
+        ft_rating = font.Font(weight=font.BOLD)
+        label_movie_rating = Label(frame_right_movie_detail, text="影片评价", fg='#7F00FF', font=ft_rating, anchor=NW)
+        label_movie_rating.place(x=0, y=30)
+        self.label_movie_rating = label_movie_rating
+
+        #影片年代
+        ft_time = font.Font(weight=font.BOLD)
+        label_movie_time = Label(frame_right_movie_detail, text="影片日期", fg='#666600', font=ft_time, anchor=NW)
+        label_movie_time.place(x=0, y=60)
+        self.label_movie_time = label_movie_time
+
+        #影片类型
+        ft_type = font.Font(weight=font.BOLD)
+        label_movie_type = Label(frame_right_movie_detail, text="影片类型", fg='#330033', font=ft_type, anchor=NW)
+        label_movie_type.place(x=0, y=90)
+        self.label_movie_type = label_movie_type
+
+        #影片演员
+        label_movie_actor = Label(frame_right_movie_detail, text="影片演员", wraplength=135, justify = 'left', anchor=NW)
+        label_movie_actor.place(x=0, y=120)
+        self.label_movie_actor = label_movie_actor
+
+        # 电影详情布局结束
+
+
+
+
+
+
+
+
+
+        # 在线播放布局开始
+
+        labelframe_movie_play_online = LabelFrame(root, width=324, height=230, text="在线观看")
+        labelframe_movie_play_online.place(x=5, y=305)
+        self.labelframe_movie_play_online = labelframe_movie_play_online
+
+        # 框架布局，承载多个控件
+        frame_root_play_online = Frame(labelframe_movie_play_online, width=324)
+        frame_l_play_online = Frame(frame_root_play_online)
+        frame_r_play_online = Frame(frame_root_play_online)
+        self.frame_root_play_online = frame_root_play_online
+        self.frame_l_play_online = frame_l_play_online
+        self.frame_r_play_online = frame_r_play_online
+
+        # 表格
+        columns_play_online = ("来源名称", "是否免费","播放地址")
+        treeview_play_online = ttk.Treeview(frame_l_play_online, height=10, show="headings", columns=columns_play_online)
+        treeview_play_online.column("来源名称", width=90, anchor='center')
+        treeview_play_online.column("是否免费", width=80, anchor='center')
+        treeview_play_online.column("播放地址", width=120, anchor='center')
+        treeview_play_online.heading("来源名称", text="来源名称")
+        treeview_play_online.heading("是否免费", text="是否免费")
+        treeview_play_online.heading("播放地址", text="播放地址")
+
+        #垂直滚动条
+        vbar_play_online = ttk.Scrollbar(frame_r_play_online, command=treeview_play_online.yview)
+        treeview_play_online.configure(yscrollcommand=vbar_play_online.set)
+
+        treeview_play_online.pack()
+        self.treeview_play_online = treeview_play_online
+        vbar_play_online.pack(side=RIGHT, fill=Y)
+        self.vbar_play_online = vbar_play_online
+
+        # 框架的位置布局
+        frame_l_play_online.grid(row=0, column=0, sticky=NSEW)
+        frame_r_play_online.grid(row=0, column=1, sticky=NS)
+        frame_root_play_online.place(x=5, y=0)
