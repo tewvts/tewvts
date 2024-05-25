@@ -1,0 +1,17 @@
+import requests
+from lxml import etree
+import csv
+
+class firework:
+    def __init__(self, x, y, color):
+        self.x = x
+        self.y = y
+        self.color = color
+        self.radius = 1
+        self.speed = random.uniform(0.5, 1.5)
+        self.angle = math.radians(random.randint(0, 360))
+        self.vx = self.speed * math.cos(self.angle)
+        self.vy = self.speed * math.sin(self.angle)
+        self.age = 0
+        self.alive = True
+        self.particles = []
