@@ -1,0 +1,19 @@
+import pgzrun
+from math import pi, sin, cos
+ 
+no_p = 100
+dt = 2*3/no_p
+t = 0
+x = []
+y = []
+while t <= 2*3:
+    x.append(16*sin(t)**3)
+    y.append(13*cos(t)-5*cos(2*t)-2*cos(3*t)-cos(4*t))
+    t += dt
+ 
+def draw():
+    screen.clear()
+    for i in range(len(x)):
+        screen.draw.filled_rect(Rect((x[i]*10+400, -y[i]*10+300), (4, 4)), 'pink')
+ 
+pgzrun.go()
